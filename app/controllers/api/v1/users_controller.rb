@@ -14,8 +14,7 @@ class Api::V1::UsersController < ApplicationController
          return user_ip_address["ip"]
     end
 
-    def get_coordinates
-          #RestClient get request to the googlebooks JS endpoint with my API Key being parsed into a JS object    
+    def get_coordinates   
         ip = get_ip_address()
         data = JSON.parse( RestClient.get("https://geoipify.whoisxmlapi.com/api/v1?apiKey=#{ENV["WHO_IS_API_KEY"]}&ipAddress=#{get_ip_address()}"))
         lat = data["location"]["lat"]
