@@ -6,7 +6,7 @@ import Establishment from '../Components/Establishment';
 import EstablishmentContainer from './EstablishmentContainer';
 import BusinessInfoContainer from './BusinessInfoContainer';
 import NavBar from '../Components/NavBar';
-
+import { AppBar, Toolbar, Typography } from '@material-ui/core/'
 import { Grid } from '@material-ui/core/';
 
 class MainContainer extends React.Component {
@@ -66,8 +66,14 @@ class MainContainer extends React.Component {
         }
         return (
             <div className="main-container"> 
-              
-               <Grid container spacing={2}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="h3" color="inherit" >
+                            YELP
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <Grid container spacing={2}>
                     <Grid item sm>
                         <EstablishmentContainer styles={styles} handleFindClick={this.handleFindClick} restaurants={results}/>
                     </Grid>

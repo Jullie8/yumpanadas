@@ -1,15 +1,11 @@
-import React, { Fragment, Component } from 'react';
-import { Paper, Typography, CardMedia } from '@material-ui/core/';
+import React from 'react';
+import { Paper, Typography} from '@material-ui/core/';
 //import FavoriteIcon from '@material-ui/icons/Favorite';
 //import ShareIcon from '@material-ui/icons/Share';
 // import Collapse from '@material-ui/core/Collapse';
 
 const BusinessInfoContainer = (props) => {
-    // const Style = {
-    //     height: 150,
-    // };
-
-    // console.log(props.restaurantInfo.location.display_address)
+    
     return (
         <Paper style={props.styles.Paper}>
         
@@ -17,7 +13,7 @@ const BusinessInfoContainer = (props) => {
                 {props.restaurantInfo.name}         
             </Typography>
             
-            <img className="business-img" src={props.restaurantInfo.image_url}  />
+            <img alt="" className="business-img" src={props.restaurantInfo.image_url}  />
 
             <Typography variant={'caption'} >
                 <p>{props.restaurantInfo.price !== undefined ? `Price:${props.restaurantInfo.price}` : null} </p>

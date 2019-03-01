@@ -12,7 +12,7 @@ const NavBar = (props) => {
                 textColor="primary"
                 centered>
 
-                <Tab label="Item One" />
+                <Tab label="Home" />
                 <Tab label="Item Two" />
                 <Tab label="Item Three" />
             </Tabs>

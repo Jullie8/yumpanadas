@@ -1,5 +1,4 @@
 import React from 'react';
-import { Image } from 'semantic-ui-react'
 
 const Establishment = (props) => {
     return (
