@@ -1,13 +1,19 @@
 import React from 'react';
+import { Switch, Route, withRouter, Link } from "react-router-dom";
+
 //import Components
 import Establishment from '../Components/Establishment';
-// import Header from '../Components/Header';
+import Footer from '../Components/Footer';
+
 //import Containers
 import EstablishmentContainer from './EstablishmentContainer';
 import BusinessInfoContainer from './BusinessInfoContainer';
-import NavBar from '../Components/NavBar';
+
+//import styles
 import { AppBar, Toolbar, Typography } from '@material-ui/core/'
 import { Grid } from '@material-ui/core/';
+
+
 
 class MainContainer extends React.Component {
 
@@ -49,9 +55,7 @@ class MainContainer extends React.Component {
     }
 
     render () {
-       // if click is true then render all the establishment but right now it is in the array in state 
        let results = this.state.isClicked ? this.renderEstablishments() : null
-        // let results = this.state.isClicked ? 
         console.log(this.state.establishments)
 
         const styles= {
@@ -66,7 +70,7 @@ class MainContainer extends React.Component {
         }
         return (
             <div className="main-container"> 
-                <AppBar position="static">
+                <AppBar position="static" style={{ background: '#d14149' }}>
                     <Toolbar>
                         <Typography variant="h3" color="inherit" >
                             YELP
@@ -82,12 +86,12 @@ class MainContainer extends React.Component {
                         <BusinessInfoContainer styles={styles} restaurantInfo={this.state.establishmentDisplay} />
                     </Grid>
                 </Grid>
-               <NavBar />
-             
-    
+
+               <Footer />
+               
             </div>
         )
     }
 }
 
-export default MainContainer;
+export default withRouter(MainContainer);

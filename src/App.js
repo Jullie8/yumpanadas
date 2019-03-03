@@ -1,18 +1,47 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 
-import MainContainer from './Containers/MainContainer';
+
 import LandingPage from './Components/LandingPage/LandingPage';
-import SignUp from './Components/SignUp/SignUp';
-
+import MainContainer from './Containers/MainContainer';
 
 class App extends Component {
-  //TODO: will need to check if the user exists on commponent did mount check if token exists in localStorage
+
 state = {
   user: {}
 }
+
+//figure out if a user is logged in or not
+componentDidMount () {
+  if(localStorage.getItem("token")) {
+    let token = localStorage.getItem("token")
+    fetch("http://localhost:3000/api/v1/profile",{
+      headers: {
+        "Content-Type": "application/json",
+        Accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({ user: data.user }, () => { this.props.history.push('/users/profile') })
+    })
+  }
+  else {
+    this.props.history.push("/");
+  }
+}
+
+renderUserDashBoard = props => {
+  const { user } = this.state;
+  if (!user) {
+    return <div> Must log in first  </div>;
+  }
+  return <MainContainer user={user} />;
+};
+
 
 handleSubmitCreateUser = (e, userObj) => {
   e.preventDefault();
@@ -36,33 +65,68 @@ handleSubmitCreateUser = (e, userObj) => {
     }
   })
   })
-  .then(res => res.json())
-  .then(data => {
-    if (data.error) {
-      alert(`${data.error}`)
-    }else{
-      this.setState({ user: data.user })
-      //TODO: redirect the user to their dashboard upon successful account creation
+  .then(res => {
+    if (res.ok) {
+      return res.json()
+    } else {
+      let error = new Error("Log in failed, please try again.")
+      throw error
     }
-    //data.error ? alert(`${data.error}`) : this.setState({ user:data.user})
+  })
+  .then(data => {
+    this.setState({ user: data.user }, () => { this.props.history.push('/users/profile') })
+      localStorage.setItem("token", data.jwt)
+      //TODO: redirect the user to their dashboard upon successful account creation
+  })
+  .catch(err => {
+    console.error(err.message)
+    alert(err.message)
+  })
+}
+
+handleLoginUser = (e, userObj) => {
+  console.log('you submitted!')
+
+  let email= userObj.email;
+  let password = userObj.password;
+
+  fetch('http://localhost:3000/api/v1/login', {
+    method: "POST", 
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem("token", )}`
+    },
+    body: JSON.stringify({ user: { email: email, password: password } })
+  })
+  .then(res => res.json())
+  .then((data) => {
+    // debugger 
+    if (data.message){
+      alert( `${data.message}`);
+    } else {
+      // debugger
+      this.setState({ user: data.user }, () => { this.props.history.push('/users/profile')})
+    }
   })
 }
 
   render() {
-
+   console.log(this.state.user)
     return (
       <div className="App">
 
         <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/signup" render={() => <SignUp handleSubmit={ this.handleSubmitCreateUser } /> } />
-
-          <Route path="/somethinelse" component={MainContainer} />
+          <Route exact path="/" render={() => <LandingPage user={this.state.user} handleSubmit={this.handleLoginUser} createUser={ this.handleSubmitCreateUser }  /> } />
+          <Route path="/users/profile" render={this.renderUserDashBoard} />
+    
         </Switch>
-        {/* <MainContainer /> to be added as in Route */}
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
+//Switch is used in this case b/c components that are not inside 
+//switch would be returned on every single route
+

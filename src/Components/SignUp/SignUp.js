@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react';
 import './SignUp.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 class SignUp extends React.Component {
     state = {
         username: '',
@@ -16,19 +17,15 @@ class SignUp extends React.Component {
     }
 
     submitHandler = (e) => {
-        this.props.handleSubmit(e, this.state)
+        this.props.createUser(e, this.state)
         this.setState({
             username: "",
             email: "",
             password:""
         })  
     };
-
-
     //I need to find a way to submit the information I have on state 
     render () {
-        console.log(this.state)
-
         const {username, email, password} = this.state
 
         return (
@@ -36,7 +33,7 @@ class SignUp extends React.Component {
                 <div className="signup-form">
 
                     <Form onSubmit={this.submitHandler}>
-                        <p> SignUp to discover empanadas near you </p>
+                        <p> It's free sign up to discover empanadas near you </p>
                         <Form.Field>
                             <label>Username</label>
                             <input 
@@ -67,8 +64,8 @@ class SignUp extends React.Component {
                             placeholder='Password' />
                         </Form.Field>
 
-                        <Button type='submit' value="submit" >Submit</Button>
-                        <p> Already have an account? <Link to="/login"> Log in now</Link></p>
+                        <Button type='submit' value="submit" >Sign Up</Button>
+                        <p> Create a pin for a favorite empanada spot.</p>
                     </Form>
                   
                 </div>
