@@ -11,12 +11,15 @@ class Api::V1::AuthController < ApplicationController
     else
       render json: { message: 'Invalid username or password' }, status: :unauthorized
     end
+    # byebug
   end
  
   private
  
   def user_login_params
     # params { user: {username: 'Chandler Bing', password: 'hi' } }
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password)  
   end
 end
+
+  

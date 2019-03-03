@@ -5,8 +5,11 @@ class Api::V1::UsersController < ApplicationController
         render json:User.all, status: 200
     end
 
-    def profile 
-        render json: { user: UserSerializer.new(current_user) }, status: :accepted
+    #you need to be authorized to access these resources 
+    def profile   
+        # @user = current_user
+        @token =  encode_token(user_id: current_user.id)
+        render json: { user: UserSerializer.new(current_user)}, status: :accepted
     end 
 
     def get_ip_address
@@ -23,7 +26,6 @@ class Api::V1::UsersController < ApplicationController
         lng = data["longitude"]
         coordsHash = {lat: lat, long: lng, ip_address:get_ip_address() }
         return coordsHash
-
     end
 
     def location 
@@ -34,8 +36,6 @@ class Api::V1::UsersController < ApplicationController
 
       render json: data
     end
-
-    
 
     def create
         @user = User.create(user_params)
