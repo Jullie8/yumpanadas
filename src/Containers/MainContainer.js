@@ -20,7 +20,8 @@ class MainContainer extends React.Component {
     state = {
       establishments:[],
       isClicked: false,
-      establishmentDisplay: {},
+      establishmentDisplay: {}
+    //   isSaveClicked: false
     }
  
     handleFindClick = (e) =>{
@@ -28,6 +29,26 @@ class MainContainer extends React.Component {
         this.setState({
             isClicked: !this.state.isClicked
         })
+    }
+
+    handleSaveClick = (e,businessObj) => {
+        console.log("Hi this is ", businessObj)
+        // make a fetch to the db /user_businesses
+        // but this database is authorized so i need to be logged in to go to this route 
+        let token = localStorage.getItem("token")
+        fetch('http://localhost:3000/api/v1/businesses', {
+            method: "POST", 
+            headers: {
+                'Content-Type': 'application/json', 
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`
+            }, 
+            body: JSON.stringify({
+                yelp_id: businessObj.id
+            })
+        })
+        .then(res => res.json())
+        .then(console.log)
     }
 
     componentDidMount () {
@@ -42,7 +63,6 @@ class MainContainer extends React.Component {
 
     handleRestaurantClick = (establishmentObj) =>{
         //goal of this function is to set State of the establishment display to the one Clicked
-        console.log(establishmentObj)
         this.setState({
             establishmentDisplay: establishmentObj
         })
@@ -50,13 +70,12 @@ class MainContainer extends React.Component {
 
     renderEstablishments = () => {
         const restaurants = this.state.establishments.map((establishment, i) => <Establishment key={i + 1} establishment={establishment} handleRestaurantClick={this.handleRestaurantClick} /> )
-        
         return restaurants;
     }
 
     render () {
        let results = this.state.isClicked ? this.renderEstablishments() : null
-        console.log(this.state.establishments)
+       
 
         const styles= {
             Paper: {
@@ -79,11 +98,11 @@ class MainContainer extends React.Component {
                 </AppBar>
                 <Grid container spacing={2}>
                     <Grid item sm>
-                        <EstablishmentContainer styles={styles} handleFindClick={this.handleFindClick} restaurants={results}/>
+                        <EstablishmentContainer user={this.props.user} styles={styles} handleFindClick={this.handleFindClick} restaurants={results}/>
                     </Grid>
 
                     <Grid item sm>
-                        <BusinessInfoContainer styles={styles} restaurantInfo={this.state.establishmentDisplay} />
+                        <BusinessInfoContainer user={this.props.user} styles={styles} restaurantInfo={this.state.establishmentDisplay} handleSaveClick={this.handleSaveClick} />
                     </Grid>
                 </Grid>
 

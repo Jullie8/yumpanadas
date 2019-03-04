@@ -5,7 +5,7 @@ import Header from '../Components/Header';
 const EstablishmentContainer = (props) => {
     return (
         <Paper style={props.styles.Paper} >
-            <Header handleFindClick={props.handleFindClick} />
+            <Header user={props.user} handleFindClick={props.handleFindClick} />
             {props.restaurants}
         </Paper>
     )

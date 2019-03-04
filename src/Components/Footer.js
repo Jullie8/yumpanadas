@@ -13,7 +13,7 @@ const Footer = (props) => {
                 centered>
 
                 <Tab label="Home"> <Link to="/users/profile"> </Link> </Tab>
-                <Tab label="Pins"> <Link to="/users/pins"> </Link>  </Tab>
+                <Tab label="Favorites"> <Link to="/users/favorites"> </Link>  </Tab>
                 {/* <Tab label="Item Three" /> */}
             </Tabs>
         </Paper>

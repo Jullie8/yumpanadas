@@ -2,54 +2,26 @@
     text-align: center;
 }
 
-/* @keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-} */
-
 .main-container {
-    /* position: relative; */
-    /* float: left; */
-    /* margin-top: 30px;
-    width: 650px;
-    align-self: auto; */
     font-family: 'EB Garamond', serif;
-    /* overflow: hidden; */
+ 
 }
 
 body {
     font-family: 'EB Garamond', serif;
 }
 
-/* .establishment-card {
-    border-bottom: 2px solid #EDDFDF;
-    margin-left: auto;
-    margin-right: auto;
-    height: 25vh;
-} */
 
 button {
     font-family: 'EB Garamond', serif;
 }
 
-/* .data-info {
-    margin-top: auto;
-    margin-bottom: auto;
-    float: right;
-    justify-content: center;
-    width: 165px;
-    height: 200px;
-} */
 
-/* Image {
-    width: 50px;
-    height: 50px;
-} */
+.business-img {
+    height: 350px;
+    padding-top: 10px;
+}
 
-.business-img{
-    height: 450px
+.business-description {
+    padding-right: 2px;
 }

@@ -3,17 +3,15 @@ import './App.css';
 
 import { Switch, Route, withRouter } from "react-router-dom";
 
-
 import LandingPage from './Components/LandingPage/LandingPage';
 import MainContainer from './Containers/MainContainer';
 
 class App extends Component {
-
-state = {
-  user: {}
-}
-
-//figure out if a user is logged in or not
+  state = {
+    user: {}
+  } 
+  
+//figure out if a user is logged in or nah
 componentDidMount () {
   if(localStorage.getItem("token")) {
     let token = localStorage.getItem("token")
@@ -94,8 +92,7 @@ handleLoginUser = (e, userObj) => {
     method: "POST", 
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem("token", )}`
+      'Accept': 'application/json'
     },
     body: JSON.stringify({ user: { email: email, password: password } })
   })
@@ -105,8 +102,9 @@ handleLoginUser = (e, userObj) => {
     if (data.message){
       alert( `${data.message}`);
     } else {
-      // debugger
+      //set localStoragehere somewhere
       this.setState({ user: data.user }, () => { this.props.history.push('/users/profile')})
+      localStorage.setItem("token", data.jwt)
     }
   })
 }
