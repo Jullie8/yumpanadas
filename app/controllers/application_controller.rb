@@ -11,6 +11,7 @@ class ApplicationController < ActionController::API
     def auth_header
         #{ 'Authorization': 'Bearer <token>' }
         request.headers['Authorization']
+        # byebug
     end
 
     def decoded_token
@@ -33,7 +34,6 @@ class ApplicationController < ActionController::API
         if decoded_token
         # decoded_token=> [{"user_id"=>2}, {"alg"=>"HS256"}]
         # or nil if we can't decode the token
-        # byebug
         user_id = decoded_token[0]['user_id'] #***** TODO: CHECK
         @user = User.find_by(id: user_id)
         end
@@ -41,6 +41,7 @@ class ApplicationController < ActionController::API
 
     def logged_in?
         !!current_user
+        # byebug
         #Ruby object/instance is 'truthy': !!user_instance #=> true and nil is 'falsey': !!nil #=> false
         #logged_in returns a boolean 
     end
@@ -48,8 +49,8 @@ class ApplicationController < ActionController::API
     # prevent unauthorized access:
     def authorized
         render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
+        #  byebug
     end
-
 
 
 end
