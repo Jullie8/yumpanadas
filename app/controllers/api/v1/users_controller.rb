@@ -5,6 +5,12 @@ class Api::V1::UsersController < ApplicationController
         render json:User.all, status: 200
     end
 
+    def show
+        @user = User.find(params[:id])
+        #  render json: { user: UserSerializer.new(@user)}, status: :ok
+        render json: @user
+    end
+
     #you need to be authorized to access these resources 
     def profile   
         # @user = current_user
