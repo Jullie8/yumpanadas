@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Form } from 'semantic-ui-react';
 import './SignUp.css';
-import { Link } from 'react-router-dom';
 
 class SignUp extends React.Component {
     state = {

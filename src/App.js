@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+
 import './App.css';
 
 import { Switch, Route, withRouter } from "react-router-dom";
 
 import LandingPage from './Components/LandingPage/LandingPage';
 import MainContainer from './Containers/MainContainer';
+import EmpanadaContainer from './Containers/EmpanadaContainer';
+require('dotenv').config()
+process.env.CI = false
 
 class App extends Component {
   state = {
@@ -37,7 +41,7 @@ renderUserDashBoard = props => {
   if (!user) {
     return <div> Must log in first  </div>;
   }
-  return <MainContainer user={user} />;
+  return <MainContainer user={user} value={0}/>;
 };
 
 
@@ -110,14 +114,15 @@ handleLoginUser = (e, userObj) => {
 }
 
   render() {
-   console.log(this.state.user)
+    // console.log(ENV["REACT_APP_YELP_API_KEY"])
+    // console.log(process.env.REACT_APP_YELP_API_KEY); 
     return (
       <div className="App">
 
         <Switch>
           <Route exact path="/" render={() => <LandingPage user={this.state.user} handleSubmit={this.handleLoginUser} createUser={ this.handleSubmitCreateUser }  /> } />
           <Route path="/users/profile" render={this.renderUserDashBoard} />
-    
+          <Route path="/users/favorites" render={() => <EmpanadaContainer user={this.state.user}/>} />
         </Switch>
       </div>
     );

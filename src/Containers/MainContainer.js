@@ -1,18 +1,18 @@
 import React from 'react';
-import { Switch, Route, withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 //import Components
+// import EmpanadaContainer from './EmpanadaContainer';
 import Establishment from '../Components/Establishment';
 import Footer from '../Components/Footer';
+import Nav from '../Components/Nav';
 
 //import Containers
 import EstablishmentContainer from './EstablishmentContainer';
 import BusinessInfoContainer from './BusinessInfoContainer';
 
-//import styles
-import { AppBar, Toolbar, Typography } from '@material-ui/core/'
-import { Grid } from '@material-ui/core/';
 
+import { Grid } from '@material-ui/core/';
 
 
 class MainContainer extends React.Component {
@@ -21,7 +21,6 @@ class MainContainer extends React.Component {
       establishments:[],
       isClicked: false,
       establishmentDisplay: {}
-    //   isSaveClicked: false
     }
  
     handleFindClick = (e) =>{
@@ -74,28 +73,22 @@ class MainContainer extends React.Component {
     }
 
     render () {
-       let results = this.state.isClicked ? this.renderEstablishments() : null
-       
+        let results = this.state.isClicked ? this.renderEstablishments() : null
 
         const styles= {
             Paper: {
                 padding:20,
                 marginTop:10,
                 marginBottom:10,
-                height: 650,
+                height: 600,
                 overflow: "scroll"
             }
-      
         }
+
         return (
             <div className="main-container"> 
-                <AppBar position="static" style={{ background: '#d14149' }}>
-                    <Toolbar>
-                        <Typography variant="h3" color="inherit" >
-                            YELP
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
+                <Nav />
+                <Footer user={this.props.user} />
                 <Grid container spacing={2}>
                     <Grid item sm>
                         <EstablishmentContainer user={this.props.user} styles={styles} handleFindClick={this.handleFindClick} restaurants={results}/>
@@ -105,9 +98,6 @@ class MainContainer extends React.Component {
                         <BusinessInfoContainer user={this.props.user} styles={styles} restaurantInfo={this.state.establishmentDisplay} handleSaveClick={this.handleSaveClick} />
                     </Grid>
                 </Grid>
-
-               <Footer />
-               
             </div>
         )
     }

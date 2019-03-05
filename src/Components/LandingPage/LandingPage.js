@@ -1,13 +1,12 @@
 import React from 'react';
 import './LandingPage.css';
-import logo from '../.././img/logo.png';
 import LandingNavBar from './LandingNavBar';
 import { Grid } from '@material-ui/core/';
 import SignUp from '../SignUp/SignUp';
 
 class LandingPage extends React.Component {
     
-    render () {
+    render () { 
         return (
             <div className="landing-pg">
                 <LandingNavBar user={this.props.user} handleSubmit={this.props.handleSubmit} />
