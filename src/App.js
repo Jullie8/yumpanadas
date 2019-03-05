@@ -28,7 +28,12 @@ componentDidMount () {
     })
     .then(res => res.json())
     .then(data => {
-      this.setState({ user: data.user }, () => { this.props.history.push('/users/profile') })
+      this.setState({ user: data.user }, () => {
+        console.log(this.props)
+        if (this.props.location.pathname === '/'){
+          this.props.history.push('/users/profile')
+        }
+      })
     })
   }
   else {
@@ -114,8 +119,7 @@ handleLoginUser = (e, userObj) => {
 }
 
   render() {
-    // console.log(ENV["REACT_APP_YELP_API_KEY"])
-    // console.log(process.env.REACT_APP_YELP_API_KEY); 
+    console.log(this.props)
     return (
       <div className="App">
 
