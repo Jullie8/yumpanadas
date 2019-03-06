@@ -1,15 +1,19 @@
 import React from 'react';
+import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteButton from './DeleteButton';
 
 const Empanada = (props) => {
     return (
         <div>
-            <h3>{props.location.name} </h3>
-            <p> {props.location.location.display_address} </p>
-            <p> {props.location.display_phone} </p>
-            <p> {props.location.rating} </p>
-            <p> {props.location.hours.is_open_now === true ? "Open" : null} </p>
+            <h3 className="fave-h3" >{props.location.name !== undefined ? `${props.location.name}` : null} </h3> {' '}
+            <p className="p-fave-content">
+             {props.location.location !== undefined ? props.location.location.display_address.join(' ') : null} {' '}
+             {props.location.display_phone !== undefined ? `Tel: ${props.location.display_phone}` : null} </p> 
+            
+            <DeleteButton user_business={props.user_business} delete={props.delete} />
+
             <hr />
-        </div>
+    </div>
     )
 }
 

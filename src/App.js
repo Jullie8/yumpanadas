@@ -110,8 +110,7 @@ handleLoginUser = (e, userObj) => {
     // debugger 
     if (data.message){
       alert( `${data.message}`);
-    } else {
-      //set localStoragehere somewhere
+    }else {
       this.setState({ user: data.user }, () => { this.props.history.push('/users/profile')})
       localStorage.setItem("token", data.jwt)
     }
