@@ -25,11 +25,15 @@ class Api::V1::UsersController < ApplicationController
 
     def get_coordinates   
         ip = get_ip_address()
-        #data = JSON.parse( RestClient.get("https://geoipify.whoisxmlapi.com/api/v1?apiKey=#{ENV["WHO_IS_API_KEY"]}&ipAddress=#{get_ip_address()}"))
-         data = JSON.parse( RestClient.get("http://api.ipstack.com/#{get_ip_address()}?access_key=#{ENV["IPSTACK_API_KEY"]}&format=1"))
-        # byebug
-        lat = data["latitude"]
-        lng = data["longitude"]
+        data = JSON.parse( RestClient.get("https://geoipify.whoisxmlapi.com/api/v1?apiKey=#{ENV["WHO_IS_API_KEY"]}&ipAddress=#{get_ip_address()}"))
+         #data = JSON.parse( RestClient.get("http://api.ipstack.com/#{get_ip_address()}?access_key=#{ENV["IPSTACK_API_KEY"]}&format=1"))
+        #for ipstack
+        # lat = data["latitude"]
+        # lng = data["longitude"]
+
+        #for whoisXML
+        lat = data["location"]["lat"]
+        lng = data["location"]["lng"]
         coordsHash = {lat: lat, long: lng, ip_address:get_ip_address() }
         return coordsHash
     end
@@ -38,7 +42,7 @@ class Api::V1::UsersController < ApplicationController
         # coords_data = get_coordinates()
       lat = get_coordinates().values[0]
       long = get_coordinates().values[1]
-      data = JSON.parse( RestClient.get "https://api.yelp.com/v3/businesses/search?term=empanadas&latitude=#{lat}&longitude=#{long}", { :Authorization => "Bearer #{ENV["YELP_API_KEY"]}" })
+      data = JSON.parse( RestClient.get "https://api.yelp.com/v3/businesses/search?limit=50&term=empanada&coffee&latitude=#{lat}&longitude=#{long}", { :Authorization => "Bearer #{ENV["YELP_API_KEY"]}" })
 
       render json: data
     end
@@ -62,3 +66,5 @@ class Api::V1::UsersController < ApplicationController
     end 
 
 end
+
+#https://geoipify.whoisxmlapi.com/api/v1?apiKey=at_D14EFmXBSqrA0iyjhP5JbUs37j1yi&ipAddress=104.218.140.34
