@@ -3,13 +3,16 @@ import React from 'react';
 import Nav from '../Components/Nav';
 import Footer from '../Components/Footer';
 import Empanada from '../Components/Empanada';
+import EmpanadaMapContainer from './EmpanadaMapContainer';
 
 //import styling 
 import { Grid, Paper } from '@material-ui/core/';
 
 class EmpanadaContainer extends React.Component {
     state = {
-        userBusinessSaves: []
+        userBusinessSaves: [],
+        showEmpanadaToggle: false,
+        selectedVenue: {}
     }
 
     componentDidMount() {
@@ -65,11 +68,20 @@ class EmpanadaContainer extends React.Component {
         })
     }
 
+    isVenueNameClickHandler = (locationObj) => {
+        console.log('my header was ', locationObj)
+        this.setState({
+            selectedVenue: locationObj
+        })
+    }
+
+
     render() {
         let results = this.state.userBusinessSaves.map((yelpData,i) => { 
-            return <Empanada user={this.props.user} user_business={yelpData.user_business_id} key={i} location={yelpData.yelp_response} delete={this.deleteFavoritedLocations} /> 
+            return <Empanada user={this.props.user} user_business={yelpData.user_business_id} key={i} location={yelpData.yelp_response} delete={this.deleteFavoritedLocations} venueClickHandler={this.isVenueNameClickHandler} /> 
         }) ;
-
+        console.log(this.state.userBusinessSaves)
+        console.log(this.props.user)
         const styles = {
             Paper: {
                 padding: 30,
@@ -79,10 +91,11 @@ class EmpanadaContainer extends React.Component {
                 overflow: "scroll"
             }
         }
+
         return(
             <div>
                 <Nav />
-                <Footer />
+                <Footer logout={this.props.logout} />
              
                 <Grid container spacing={2}>
                     <Grid item sm>
@@ -93,7 +106,9 @@ class EmpanadaContainer extends React.Component {
                     </Grid>
  
                     <Grid item sm>
-                        Map Feature Comming Soon!
+                        Map Feature Comming Soon! 
+                        <EmpanadaMapContainer location={this.state.selectedVenue}/>
+                           
                     </Grid>
                      
                 </Grid>

@@ -17,8 +17,8 @@ const BusinessInfoContainer = (props) => {
             <img alt="" className="business-img" src={props.restaurantInfo.image_url}  />
 
             <div className="business-description">
-            <Typography variant={'caption'} >
-                <p>{props.restaurantInfo.price !== undefined ? `Price:${props.restaurantInfo.price}` : null} </p>
+                <Typography variant={"body1"} noWrap={true} fontSize={16}> 
+                    <p>{props.restaurantInfo.price !== undefined ? `Price:${props.restaurantInfo.price}` : null} </p>
                 <p> {props.restaurantInfo.rating !== undefined ? `Rating:${props.restaurantInfo.rating}` : null} </p>
                 <p>{props.restaurantInfo.location !== undefined ? props.restaurantInfo.location.display_address.join(' ') : null} </p>
                 <p>{props.restaurantInfo.display_phone !== undefined ? `Tel: ${props.restaurantInfo.display_phone}` : null} </p>

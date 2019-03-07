@@ -17,6 +17,7 @@ button {
 .business-img {
     height: 350px;
     padding-top: 10px;
+    border-radius: 50px;
 }
 
 .business-description {
@@ -28,7 +29,7 @@ button {
     width: max-content;
     padding-right: 206px;
     padding-left: 20px;
-    padding-top: 10px;
+    padding-top: 0px;
 }
 
 .p-fave-content {
@@ -49,4 +50,25 @@ button {
 .delete-div {
     width: 23px;
     margin-left: 15px
+}
+
+.empanada-fave {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.data-info {
+    font-size: 16px;
+}
+
+.header {
+    font-size: 16px;
+}
+
+/* .MuiTypography-caption-44{
+    font-family: auto;
+    font-size: 1rem;
+} */
+
+.MuiTypography-body1-43{
+    font-family: auto;
 }

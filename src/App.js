@@ -43,10 +43,10 @@ componentDidMount () {
 
 renderUserDashBoard = props => {
   const { user } = this.state;
-  if (!user) {
+  if (!user.id) {
     return <div> Must log in first  </div>;
   }
-  return <MainContainer user={user} value={0}/>;
+  return <MainContainer user={user} logout={this.handleLogOut}/>;
 };
 
 
@@ -76,7 +76,7 @@ handleSubmitCreateUser = (e, userObj) => {
     if (res.ok) {
       return res.json()
     } else {
-      let error = new Error("Log in failed, please try again.")
+      let error = new Error("Sign up failed, please enter valid email.")
       throw error
     }
   })
@@ -117,15 +117,23 @@ handleLoginUser = (e, userObj) => {
   })
 }
 
+handleLogOut = () => {
+  console.log('hey logout')
+  localStorage.removeItem("token");
+  this.setState({
+    user: {}
+  });
+  this.props.history.push("/");
+
+}
   render() {
     console.log(this.props)
     return (
       <div className="App">
-
         <Switch>
           <Route exact path="/" render={() => <LandingPage user={this.state.user} handleSubmit={this.handleLoginUser} createUser={ this.handleSubmitCreateUser }  /> } />
           <Route path="/users/profile" render={this.renderUserDashBoard} />
-          <Route path="/users/favorites" render={() => <EmpanadaContainer user={this.state.user}/>} />
+          <Route path="/users/favorites" render={() => <EmpanadaContainer user={this.state.user} logout={this.handleLogOut}/>} />
         </Switch>
       </div>
     );

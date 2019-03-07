@@ -3,6 +3,7 @@ import './LandingPage.css';
 import LandingNavBar from './LandingNavBar';
 import { Grid } from '@material-ui/core/';
 import SignUp from '../SignUp/SignUp';
+import logo from '../../img/logo.png';
 
 class LandingPage extends React.Component {
     
@@ -13,7 +14,7 @@ class LandingPage extends React.Component {
 
                 <Grid className="sign-up-right" container spacing={2}>
                     <Grid item sm>
-                        Left
+                        <img src={logo} height={'400'}/>
                     </Grid>
 
                     <Grid item sm >
