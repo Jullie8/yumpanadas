@@ -6,7 +6,7 @@ const EmpanadaMap = (props) => {
     console.log(props.location)
     return (
       <div> 
-            {props.location.coordinates !== undefined ? <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${props.location.coordinates.latitude},${props.location.coordinates.longitude}&zoom=18&size=400x400&key=AIzaSyCs-y4jylAvh6Lf2l_G-Ktuue4qapukIc0`} style={{ height: '80vh' }}/> : null}
+            {props.location.coordinates !== undefined ? <img alt="map" src={`https://maps.googleapis.com/maps/api/staticmap?center=${props.location.coordinates.latitude},${props.location.coordinates.longitude}&zoom=18&size=400x400&key=AIzaSyCs-y4jylAvh6Lf2l_G-Ktuue4qapukIc0`} style={{ height: '80vh' }}/> : null}
       </div>
     )
 }

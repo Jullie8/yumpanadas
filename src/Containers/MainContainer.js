@@ -47,7 +47,11 @@ class MainContainer extends React.Component {
             })
         })
         .then(res => res.json())
-        .then(console.log)
+        .then((data)=>{
+            //if businessobj 
+            console.log('this the data',data.user_business)
+        })
+
     }
 
     componentDidMount () {

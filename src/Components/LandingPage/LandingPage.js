@@ -14,7 +14,7 @@ class LandingPage extends React.Component {
 
                 <Grid className="sign-up-right" container spacing={2}>
                     <Grid item sm>
-                        <img src={logo} height={'400'}/>
+                        <img alt="logo" src={logo} height={'400'}/>
                     </Grid>
 
                     <Grid item sm >

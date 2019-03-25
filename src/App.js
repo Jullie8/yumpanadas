@@ -11,14 +11,18 @@ require('dotenv').config()
 process.env.CI = false
 
 class App extends Component {
+  
   state = {
-    user: {}
+    user: { }
   } 
   
 //figure out if a user is logged in or nah
 componentDidMount () {
   if(localStorage.getItem("token")) {
-    let token = localStorage.getItem("token")
+    //const
+    // server connection out of visual comps
+    //src -  move out - look into api - index.js
+    const token = localStorage.getItem("token")
     fetch("http://localhost:3000/api/v1/profile",{
       headers: {
         "Content-Type": "application/json",
@@ -40,13 +44,13 @@ componentDidMount () {
     this.props.history.push("/");
   }
 }
-
+/// refactor: 
 renderUserDashBoard = props => {
   const { user } = this.state;
   if (!user.id) {
     return <div> Must log in first  </div>;
   }
-  return <MainContainer user={user} logout={this.handleLogOut}/>;
+  return <MainContainer user={ user } logout={this.handleLogOut}/>;
 };
 
 
@@ -93,9 +97,9 @@ handleSubmitCreateUser = (e, userObj) => {
 
 handleLoginUser = (e, userObj) => {
   console.log('you submitted!')
-
-  let email= userObj.email;
-  let password = userObj.password;
+// if not over writing use const 
+  const email= userObj.email;
+  const password = userObj.password;
 
   fetch('http://localhost:3000/api/v1/login', {
     method: "POST", 
@@ -124,19 +128,22 @@ handleLogOut = () => {
     user: {}
   });
   this.props.history.push("/");
-
 }
+
   render() {
     console.log(this.props)
-    return (
-      <div className="App">
+    return <div className="App">
         <Switch>
-          <Route exact path="/" render={() => <LandingPage user={this.state.user} handleSubmit={this.handleLoginUser} createUser={ this.handleSubmitCreateUser }  /> } />
+          {/* Landing route */}
+          <Route exact path="/" render={() => <LandingPage user={this.state.user} handleSubmit={this.handleLoginUser} createUser={this.handleSubmitCreateUser} />} />
+
+          {/* Profile route */}
           <Route path="/users/profile" render={this.renderUserDashBoard} />
-          <Route path="/users/favorites" render={() => <EmpanadaContainer user={this.state.user} logout={this.handleLogOut}/>} />
+
+          {/* favorites route */}
+          <Route path="/users/favorites" render={() => <EmpanadaContainer user={this.state.user} logout={this.handleLogOut} />} />
         </Switch>
-      </div>
-    );
+      </div>;
   }
 }
 

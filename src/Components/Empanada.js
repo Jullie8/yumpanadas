@@ -1,5 +1,5 @@
 import React from 'react';
-import DeleteIcon from '@material-ui/icons/Delete';
+// import DeleteIcon from '@material-ui/icons/Delete';
 import DeleteButton from './DeleteButton';
 import EmpanadaFaveHeader from './EmpanadaFaveHeader';
 
@@ -22,5 +22,3 @@ const Empanada = (props) => {
 }
 
 export default Empanada;
-
-//

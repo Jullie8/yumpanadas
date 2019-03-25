@@ -80,17 +80,17 @@ class EmpanadaContainer extends React.Component {
         let results = this.state.userBusinessSaves.map((yelpData,i) => { 
             return <Empanada user={this.props.user} user_business={yelpData.user_business_id} key={i} location={yelpData.yelp_response} delete={this.deleteFavoritedLocations} venueClickHandler={this.isVenueNameClickHandler} /> 
         }) ;
-        console.log(this.state.userBusinessSaves)
-        console.log(this.props.user)
-        const styles = {
-            Paper: {
-                padding: 30,
-                marginTop: 10,
-                marginBottom: 10,
-                height: 650,
-                overflow: "scroll"
-            }
-        }
+        console.log("saves:", this.state.userBusinessSaves)
+        // console.log(this.props.user)
+        //const styles = {
+           // Paper: {
+                // padding: 30,
+                // marginTop: 10,
+                // marginBottom: 10,
+                // height: 650,
+                // overflow: "scroll"
+           // }
+       // }
 
         return(
             <div>
