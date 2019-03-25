@@ -3,7 +3,6 @@ class Api::V1::UserBusinessesController < ApplicationController
         render json: UserBusiness.all, status: 200
     end
 
-
     def destroy 
         @user_business = UserBusiness.find(params[:id])
         @user_business.destroy
