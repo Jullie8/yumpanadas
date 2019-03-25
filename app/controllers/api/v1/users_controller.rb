@@ -67,4 +67,4 @@ class Api::V1::UsersController < ApplicationController
 
 end
 
-#https://geoipify.whoisxmlapi.com/api/v1?apiKey=at_D14EFmXBSqrA0iyjhP5JbUs37j1yi&ipAddress=104.218.140.34
+#test
