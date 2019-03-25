@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core/'
 
 const Nav = () => {
     return (
-        <AppBar position="static" style={{ background: '#d14149' }}>
+        <AppBar position="static" style={{ background: '#ea6056' }}>
             <Toolbar>
                 <Typography variant="h3" color="inherit" >
                     YUMPANADAS

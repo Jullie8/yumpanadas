@@ -47,7 +47,11 @@ class MainContainer extends React.Component {
             })
         })
         .then(res => res.json())
-        .then(console.log)
+        .then((data)=>{
+            //if businessobj 
+            console.log('this the data',data.user_business)
+        })
+
     }
 
     componentDidMount () {
@@ -88,12 +92,11 @@ class MainContainer extends React.Component {
         return (
             <div className="main-container"> 
                 <Nav />
-                <Footer user={this.props.user} />
+                <Footer user={this.props.user} logout={this.props.logout} />
                 <Grid container spacing={2}>
                     <Grid item sm>
                         <EstablishmentContainer user={this.props.user} styles={styles} handleFindClick={this.handleFindClick} restaurants={results}/>
                     </Grid>
-
                     <Grid item sm>
                         <BusinessInfoContainer user={this.props.user} styles={styles} restaurantInfo={this.state.establishmentDisplay} handleSaveClick={this.handleSaveClick} />
                     </Grid>

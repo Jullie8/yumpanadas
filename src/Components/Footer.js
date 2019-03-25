@@ -6,14 +6,14 @@ import { Dropdown, Menu} from 'semantic-ui-react'
 
 // TODO: Update <Search> usage after its will be implemented
 
-const Footer = () => (
+const Footer = (props) => (
     <div>
         <Menu attached='top'>
             <Dropdown item position='right'icon='bars' simple>
                 <Dropdown.Menu>
                     <Dropdown.Item><Link to="/users/profile"> Home </Link> </Dropdown.Item>
                     <Dropdown.Item><Link to="/users/favorites"> Favorites </Link></Dropdown.Item>
-                    <Dropdown.Item>Log out</Dropdown.Item>
+                    <Dropdown.Item onClick={(props.logout)}>Log out</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
 
