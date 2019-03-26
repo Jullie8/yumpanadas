@@ -1,10 +1,14 @@
 import React from 'react';
 
-const EmpanadaFaveHeader = (props) => {
-    return (
-    <div className="fave-h3" > 
-        <h3 onClick={() => { props.venueClickHandler(props.location) }} >{props.location.name !== undefined ? `${props.location.name}` : null} </h3> {' '}
-    </div>)
-}
+const EmpanadaFaveHeader = ({ venueClickHandler, location }) => (
+  <div className="fave-h3">
+    <h3 onClick={() => { venueClickHandler(location); }}>
+      {location.name !== undefined ? `${location.name}` : null}
+      {' '}
+    </h3>
+    {' '}
+    {' '}
+  </div>
+);
 
 export default EmpanadaFaveHeader;

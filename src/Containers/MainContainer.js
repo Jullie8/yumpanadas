@@ -48,7 +48,7 @@ class MainContainer extends React.Component {
         })
         .then(res => res.json())
         .then((data)=>{
-            //if businessobj 
+            //handle this optimistically however if the user tries to save again then tell user that item has been saved to favorites with a toast
             console.log('this the data',data.user_business)
         })
 

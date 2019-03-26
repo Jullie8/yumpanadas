@@ -1,11 +1,10 @@
 import React from 'react';
 
-//stay away from inline styling they are difficult to find and can not re use it again 
-const FindButton = (props) => (
-    <button onClick={props.handleFindClick} style={{borderRadius: 15}}>
+// To Do: refactor away from inline styling
+const FindButton = ({ handleFindClick }) => (
+  <button type="button" onClick={handleFindClick} style={{ borderRadius: 15 }}>
         Locate
-    </button>
-)
+  </button>
+);
 
 export default FindButton;
-   
