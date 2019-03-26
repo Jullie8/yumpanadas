@@ -24,16 +24,13 @@ class MainContainer extends React.Component {
     }
  
     handleFindClick = (e) =>{
-        console.log('you need to find a coffe nearby now!!!') 
         this.setState({
             isClicked: !this.state.isClicked
         })
     }
-
+    
     handleSaveClick = (e,businessObj) => {
         console.log("Hi this is ", businessObj)
-        // make a fetch to the db /user_businesses
-        // but this database is authorized so i need to be logged in to go to this route 
         let token = localStorage.getItem("token")
         fetch('http://localhost:3000/api/v1/businesses', {
             method: "POST", 
@@ -49,7 +46,8 @@ class MainContainer extends React.Component {
         .then(res => res.json())
         .then((data)=>{
             //handle this optimistically however if the user tries to save again then tell user that item has been saved to favorites with a toast
-            console.log('this the data',data.user_business)
+            //maybe a toast 
+            console.log('this the data', data.user_business)
         })
 
     }

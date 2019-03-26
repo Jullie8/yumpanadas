@@ -11,7 +11,6 @@ import { Grid, Paper } from '@material-ui/core/';
 class EmpanadaContainer extends React.Component {
     state = {
         userBusinessSaves: [],
-        showEmpanadaToggle: false,
         selectedVenue: {}
     }
 
@@ -44,7 +43,9 @@ class EmpanadaContainer extends React.Component {
             })
         })
         return Promise.all(yelPromises)
-        .then(yelpData => { this.setState({ userBusinessSaves: yelpData }) })
+        .then((yelpData) => { 
+            this.setState({ userBusinessSaves: yelpData }) 
+        })
     }
 
     deleteFavoritedLocations = (user_business_row_id) => {

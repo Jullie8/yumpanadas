@@ -4,7 +4,15 @@ import React from 'react';
 
 const EmpanadaMap = ({ location }) => (
   <div>
-    {location.coordinates !== undefined ? <img alt="map" src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.coordinates.latitude},${location.coordinates.longitude}&zoom=18&size=400x400&key=AIzaSyCs-y4jylAvh6Lf2l_G-Ktuue4qapukIc0`} style={{ height: '80vh' }} /> : null}
+    {location.coordinates !== undefined ? (
+      <img
+        alt="map"
+        src={`https://maps.googleapis.com/maps/api/staticmap?center=${location
+          .coordinates.latitude},${location.coordinates
+          .longitude}&zoom=18&size=400x400&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
+        style={{ height: "80vh" }}
+      />
+    ) : null}
   </div>
 );
 
