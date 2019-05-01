@@ -19,19 +19,19 @@ class Api::V1::UsersController < ApplicationController
     end 
 
     def get_ip_address
+       
          user_ip_address = JSON.parse( RestClient.get("https://api.ipify.org?format=json"))
          return user_ip_address["ip"]
     end
 
     def get_coordinates   
         ip = get_ip_address()
-        data = JSON.parse( RestClient.get("https://geoipify.whoisxmlapi.com/api/v1?apiKey=#{ENV["WHO_IS_API_KEY"]}&ipAddress=#{get_ip_address()}"))
-         #data = JSON.parse( RestClient.get("http://api.ipstack.com/#{get_ip_address()}?access_key=#{ENV["IPSTACK_API_KEY"]}&format=1"))
+        data = JSON.parse( RestClient.get("https://geo.ipify.org/api/v1?apiKey=#{ENV["GEOIPIFY_API_KEY"]}&ipAddress=#{get_ip_address()}"))
+    
+        #data = JSON.parse( RestClient.get("http://api.ipstack.com/#{get_ip_address()}?access_key=#{ENV["IPSTACK_API_KEY"]}&format=1"))
         #for ipstack
         # lat = data["latitude"]
         # lng = data["longitude"]
-
-        #for whoisXML
         lat = data["location"]["lat"]
         lng = data["location"]["lng"]
         coordsHash = {lat: lat, long: lng, ip_address:get_ip_address() }
