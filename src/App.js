@@ -33,7 +33,7 @@ componentDidMount () {
     .then(res => res.json())
     .then(data => {
       this.setState({ user: data.user }, () => {
-        console.log(this.props)
+        // console.log(this.props)
         if (this.props.location.pathname === '/'){
           this.props.history.push('/users/profile')
         }

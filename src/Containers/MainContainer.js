@@ -24,13 +24,13 @@ class MainContainer extends React.Component {
     }
  
     handleFindClick = (e) =>{
-        console.log('you need to find a coffe nearby now!!!') 
+        console.log(' you need to find a coffee nearby now!') 
         this.setState({
             isClicked: !this.state.isClicked
         })
     }
 
-    handleSaveClick = (e,businessObj) => {
+    handleSaveClick = (e, businessObj, x = x || 0) => {
         console.log("Hi this is ", businessObj)
         // make a fetch to the db /user_businesses
         // but this database is authorized so i need to be logged in to go to this route 
@@ -48,8 +48,7 @@ class MainContainer extends React.Component {
         })
         .then(res => res.json())
         .then((data)=>{
-            //if businessobj 
-            console.log('this the data',data.user_business)
+          console.log('this the data',data.user_business)
         })
 
     }
@@ -98,7 +97,7 @@ class MainContainer extends React.Component {
                         <EstablishmentContainer user={this.props.user} styles={styles} handleFindClick={this.handleFindClick} restaurants={results}/>
                     </Grid>
                     <Grid item sm>
-                        <BusinessInfoContainer user={this.props.user} styles={styles} restaurantInfo={this.state.establishmentDisplay} handleSaveClick={this.handleSaveClick} />
+                        <BusinessInfoContainer save={this.state.save} user={this.props.user} styles={styles} restaurantInfo={this.state.establishmentDisplay} handleSaveClick={this.handleSaveClick} />
                     </Grid>
                 </Grid>
             </div>
@@ -107,3 +106,6 @@ class MainContainer extends React.Component {
 }
 
 export default withRouter(MainContainer);
+
+//why are the reasons i want a new job 
+//what type of job? 
