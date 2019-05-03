@@ -1,0 +1,74 @@
+.App {
+    text-align: center;
+}
+
+.main-container {
+    font-family: 'EB Garamond', serif;
+}
+
+body {
+    font-family: 'EB Garamond', serif;
+}
+
+button {
+    font-family: 'EB Garamond', serif;
+}
+
+.business-img {
+    height: 350px;
+    padding-top: 10px;
+    border-radius: 50px;
+}
+
+.business-description {
+    padding-right: 2px;
+}
+
+.fave-h3 {
+    height: 20px;
+    width: max-content;
+    padding-right: 206px;
+    padding-left: 20px;
+    padding-top: 0px;
+}
+
+.p-fave-content {
+    text-align: left;
+    padding-left: 20px
+}
+
+.delete {
+    margin-right: 650px;
+}
+
+;
+.p user-name {
+    width: fit-content;
+    /* padding-right: 600px; */
+}
+
+.delete-div {
+    width: 23px;
+    margin-left: 15px
+}
+
+.empanada-fave {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.data-info {
+    font-size: 16px;
+}
+
+.header {
+    font-size: 16px;
+}
+
+/* .MuiTypography-caption-44{
+    font-family: auto;
+    font-size: 1rem;
+} */
+
+.MuiTypography-body1-43{
+    font-family: auto;
+}
