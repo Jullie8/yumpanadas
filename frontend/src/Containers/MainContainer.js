@@ -29,7 +29,7 @@ class MainContainer extends React.Component {
         })
     }
     
-    handleSaveClick = (e,businessObj) => {
+    handleSaveClick = (e, businessObj) => {
         console.log("Hi this is ", businessObj)
         let token = localStorage.getItem("token")
         fetch('http://localhost:3000/api/v1/businesses', {
