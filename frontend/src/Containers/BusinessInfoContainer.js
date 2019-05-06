@@ -2,7 +2,16 @@ import React from 'react';
 import { Paper, Typography } from '@material-ui/core/';
 import SaveButton from '../Components/SaveButton/SaveButton';
 
-
+const isOpenCondition = (obj) => {
+  if (obj.is_closed !== undefined) {
+    if (obj.is_closed) {
+      return <p> Closed now</p>
+    }else {
+      return <p> Open now</p>
+    }
+  }
+  return null;
+}
 const BusinessInfoContainer = ({
   handleSaveClick, restaurantInfo, styles, user,
 }) => (
@@ -30,6 +39,10 @@ const BusinessInfoContainer = ({
           {' '}
           {restaurantInfo.rating !== undefined ? `Rating:${restaurantInfo.rating}` : null}
           {' '}
+        </p>
+        <p>
+          {' '}
+            {isOpenCondition(restaurantInfo)}
         </p>
         <p>
           {restaurantInfo.location !== undefined ? restaurantInfo.location.display_address.join(' ') : null}

@@ -146,6 +146,4 @@ handleLogOut = () => {
 }
 
 export default withRouter(App);
-//Switch is used in this case b/c components that are not inside 
-//switch would be returned on every single route
 
