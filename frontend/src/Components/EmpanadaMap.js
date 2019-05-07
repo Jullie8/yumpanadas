@@ -10,7 +10,7 @@ const EmpanadaMap = ({ location }) => (
         src={`https://maps.googleapis.com/maps/api/staticmap?center=${location
           .coordinates.latitude},${location.coordinates
           .longitude}&zoom=18&size=400x400&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
-        style={{ height: "80vh" }}
+        style={{ height: "50vh" }}
       />
     ) : null}
   </div>
