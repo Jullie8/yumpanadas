@@ -115,7 +115,7 @@ Run npm start
 
 ## Acknowledgements
 
-* Special thanks to Ipify Api Team
-* Special thanks to Yelp Fusion Api Team
+* Thank you to Ipify Api Team
+* Thank you to Yelp Fusion Api Team
 * Thank you Google for Material-UI next and google maps api
-* Special thanks [Geoipify-whoisxmlapi](https://geoipify.whoisxmlapi.com/) for adding 500 free credits to my account. Thank you!
+* Grateful towards [Geoipify-whoisxmlapi](https://geoipify.whoisxmlapi.com/) for adding 500 free credits to my account. Thank you!
