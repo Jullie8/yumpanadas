@@ -1,6 +1,6 @@
 # Yumpanadas
 
-A single page application created with React, Rails and Material UI. Yumpanadas was inspired by my love for empanadas and the desire to be able to discover empanadas food trucks or venues nearby, anywhere in NYC. The goal of this app was to connect users with nearby empanada venues and food trucks with an additional option to save an empanada spot.
+A single page application created with React, Rails and Material UI. Yumpanadas was inspired by my love for empanadas and the desire to be able to discover empanadas food trucks or venues nearby, anywhere in NYC. The goal of this app was to connect users with nearby empanada venues and food trucks with an additional option to save or favorite an empanada spot.
 
 ## Table of Contents
 
@@ -46,7 +46,7 @@ The instructions below will get you a copy of the project running on your local 
 
 ### Project Prerequisites
 
-* Install Rails 5.2.3 c
+* Install Rails 5.2.3
 * Install node
 * Install PostgreSQL
 
@@ -75,13 +75,13 @@ bundle install
 
 Create a .env file inside backend root folder
 
-Add To .env file: GEOIPIFY_API_KEY=KeyCredentials [Click Here](https://www.ipify.org/)
+Add To .env file: GEOIPIFY_API_KEY=[IPIFY API Key Here](https://www.ipify.org/)
 
-Add To .env file: YELP_API_KEY=KeyCredentials [Click Here](https://www.yelp.com/login?return_url=%2Fdevelopers%2Fv3%2Fmanage_app)
+Add To .env file: YELP_API_KEY=[Yelp API Key Here](https://www.yelp.com/login?return_url=%2Fdevelopers%2Fv3%2Fmanage_app)
 
 Add To .env file JWT_SECRET=yourkeysecret
 
-On terminal while in backend root folder
+In terminal while in backend root folder
 ```
 Run rails s 
 ```
@@ -93,9 +93,9 @@ Open another terminal window and navigate into frontend directory
 
 Create a .env file inside frontend root folder
 
-Add to .env file: REACT_APP_GOOGLE_API_KEY=KeyCredentials [Click Here](https://developers.google.com/books/docs/v1/getting_started)
+Add to .env file: REACT_APP_GOOGLE_API_KEY=[Google Maps API Key Here](https://developers.google.com/books/docs/v1/getting_started)
 
-Add to .env file: REACT_APP_YELP_API_KEY=Credentials [Click Here](https://www.yelp.com/login?return_url=%2Fdevelopers%2Fv3%2Fmanage_app)
+Add to .env file: REACT_APP_YELP_API_KEY=[Yelp API Key Here](https://www.yelp.com/login?return_url=%2Fdevelopers%2Fv3%2Fmanage_app)
 
 
 ```
@@ -105,12 +105,13 @@ Run npm start
 
 ## Future Implementations
 
-* Track twitter feeds/hashtags for empanada trucks to make add more business data
+* Track twitter feeds/hashtags for empanada trucks to add more business data
 
-* Add a toast indicating that a business has been saved
+* Add a toast indicating that a business has been saved/favorited
 
 * Users can add a review for businesses
 
+* Business saves/favorite to be requested from the backend for api key security
 
 ## Acknowledgements
 
