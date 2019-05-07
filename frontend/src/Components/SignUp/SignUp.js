@@ -64,7 +64,7 @@ class SignUp extends React.Component {
                         </Form.Field>
 
                         <Button type='submit' value="submit" >Sign Up</Button>
-                        <p> Create a pin for a favorite empanada spot.</p>
+                        <p> Save your favorite empanada spot.</p>
                     </Form>
                   
                 </div>

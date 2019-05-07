@@ -53,7 +53,7 @@ class Login extends React.Component {
                     placeholder='Password' 
                     />
 
-                    <Button className="button" color="inherit" size='small' type='submit' value="submit"> Submit</Button>
+                    <Button className="button" color="inherit" size='small' type='submit' value="submit">Login</Button>
                 </Form>
             </div>
         )
