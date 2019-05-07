@@ -25,7 +25,7 @@ A single page application created with React, Rails and Material UI. Yumpanadas 
 
 * React.JS - frontend
 * react-router-dom - Page Navigation
-* Geoipify API - for ip address detection and coordinates
+* Ipify API - for ip address detection and coordinates
 * Yelp Fusion API - for all business related data
 * Ruby on Rails (Rails 5.2.3) - server
 * PostgreSQL - Database
@@ -44,13 +44,13 @@ A single page application created with React, Rails and Material UI. Yumpanadas 
 
 The instructions below will get you a copy of the project running on your local machine.
 
-#### Project Prerequisites
+### Project Prerequisites
 
-- Install Rails 5.2.3 click to install
-- Install node click here to install
-- Install PostgreSQL click here to install
+* Install Rails 5.2.3 c
+* Install node
+* Install PostgreSQL
 
-#### Clone Repository
+### Clone Repository
 
 ```
 Open terminal
@@ -61,35 +61,60 @@ Navigate into the directory where cloned project was saved and open project fold
 For example - in the terminal run:
 
 ```
-cd Desktop 
+cd Desktop
 cd yumpanadas
 ls (typing ls will show you all the folders the project contains)
-
 ```
 
-#### Server Installation
+### Server Installation
 
+Navigate into backend directory:
 ```
 bundle install
-Create a .env file inside backend root folder
-Add To .env file: GEOIPIFY_API_KEY=KeyCredentials Found Here
-Add To .env file: YELP_API_KEY=KeyCredentials Found Here
-Add To .env file JWT_SECRET=any secret key such as yourkeysecret
-Run rails s (on terminal while in backend root folder)
-open localhost://3000 on browser
 ```
 
-#### Client Installation
+Create a .env file inside backend root folder
 
-Open another terminal window and navigated into frontend directory
+Add To .env file: GEOIPIFY_API_KEY=KeyCredentials [Click Here](https://www.ipify.org/)
+
+Add To .env file: YELP_API_KEY=KeyCredentials [Click Here](https://www.yelp.com/login?return_url=%2Fdevelopers%2Fv3%2Fmanage_app)
+
+Add To .env file JWT_SECRET=yourkeysecret
+
+On terminal while in backend root folder
+```
+Run rails s 
+```
+open localhost://3000 on browser
+
+### Client Installation
+
+Open another terminal window and navigate into frontend directory
+
+Create a .env file inside frontend root folder
+
+Add to .env file: REACT_APP_GOOGLE_API_KEY=KeyCredentials [Click Here](https://developers.google.com/books/docs/v1/getting_started)
+
+Add to .env file: REACT_APP_YELP_API_KEY=Credentials [Click Here](https://www.yelp.com/login?return_url=%2Fdevelopers%2Fv3%2Fmanage_app)
+
 
 ```
 Run npm install
 Run npm start
 ```
 
-
 ## Future Implementations
+
+* Track twitter feeds/hashtags for empanada trucks to make add more business data
+
+* Add a toast indicating that a business has been saved
+
+* Users can add a review for businesses
 
 
 ## Acknowledgements
+
+* Special thanks to Ipify Api Team
+* Special thanks to Yelp Fusion Api Team
+* Thank you Google for Material-UI next and google maps api
+* Special thanks [Geoipify-whoisxmlapi](https://geoipify.whoisxmlapi.com/) for adding 500 free credits to my account. Thank you!
